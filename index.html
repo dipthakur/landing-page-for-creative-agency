@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Landing Page for Creative Agency</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+
+    <!-- Owl Carousel CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+    />
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    #scrollToTop {
+      position: fixed;
+      bottom: 40px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 999;
+      display: none;
+      padding: 0;
+    }
+
+    #scrollToTop svg {
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+
+    #circle-bg,
+    #circle-progress {
+      fill: none;
+      stroke-width: 6;
+      r: 45;
+      cx: 50;
+      cy: 50;
+    }
+
+    #circle-bg {
+      stroke: rgba(255, 255, 255, 0.2);
+    }
+
+    #circle-progress {
+      stroke: #698cf0;
+      stroke-dasharray: 283;
+      stroke-dashoffset: 283;
+      transition: stroke-dashoffset 0.25s linear;
+    }
+
+    #scrollToTop polyline {
+      stroke: #698cf0;
+      stroke-width: 4;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transform: rotate(180deg) translateY(-5px);
+    }
+
+    #scrollToTop .scroll-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-size: 20px;
+      color: #698cf0;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    /* ------------------------------------- */
+
+    .navbar-brand img {
+      width: 100px;
+      height: auto;
+      border-radius: 4px;
+    }
+
+    .nav-link.dropdown-toggle::after {
+      display: none !important;
+    }
+
+    .navbar {
+      background-color: transparent;
+      transition: background-color 0.3s ease;
+    }
+
+    .navbar:hover {
+      background-color: rgba(105, 140, 240, 0.9);
+    }
+
+    .navbar-nav .nav-link {
+      position: relative;
+      color: #000;
+      font-weight: 600;
+      transition: color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: #698cf0;
+    }
+
+    .navbar-nav .nav-link::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: #698cf0;
+      transition: width 0.3s ease;
+      border-radius: 2px;
+    }
+
+    .navbar-nav .nav-link:hover::after,
+    .navbar-nav .nav-link.active::after {
+      width: 100%;
+    }
+
+    .fade-in-up {
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .hero {
+      background: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e")
+        no-repeat center center/cover;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 40px;
+      position: relative;
+      margin-top: 50px;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .hero-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      max-width: 1200px;
+      position: relative;
+      z-index: 2;
+      gap: 2rem;
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards;
+      animation-delay: 0.3s;
+    }
+
+    .left-text {
+      flex: 1;
+      color: #fff;
+    }
+
+    .left-text h4 {
+      font-size: 1rem;
+      opacity: 0.9;
+      margin-bottom: 10px;
+    }
+
+    .left-text h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .left-text h1 span {
+      color: #698cf0;
+      text-shadow: 0 0 12px #698cf0;
+    }
+
+    .let-talk {
+      background: #698cf0;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .button {
+      background: #698cf0;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .let-talk:hover {
+      background-color: #000;
+      color: #698cf0;
+    }
+
+    .button:hover {
+      background-color: #000;
+      color: #698cf0;
+    }
+
+    .form-card {
+      background: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      flex: 1;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .form-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: #333;
+      font-weight: 700;
+    }
+
+    .form-card p {
+      font-size: 0.9rem;
+      margin-bottom: 25px;
+      color: #666;
+    }
+
+    .form-card input {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 15px;
+      border: 1px solid #777;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    .form-control:focus {
+      box-shadow: none;
+      border-color: #000;
+    }
+
+    .form-card .disclaimer {
+      font-size: 0.8rem;
+      color: #888;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 20px;
+    }
+
+    .form-card button {
+      background: #698cf0;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      width: 100%;
+      cursor: pointer;
+    }
+
+    /* About Section */
+    .about-section {
+      padding: 100px 5% 80px;
+      text-align: center;
+      background: #f4f7fb;
+    }
+
+    .about-section h2 {
+      font-size: 2.4rem;
+      color: #1a73e8;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      font-weight: 900;
+      letter-spacing: 1.2px;
+      animation: fadeInUp 1.5s ease forwards;
+    }
+
+    .about-section h2 span {
+      color: #111;
+    }
+
+    .about-section p {
+      max-width: 720px;
+      margin: 0 auto 60px;
+      color: #555;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      letter-spacing: 0.4px;
+      animation: fadeInUp 1.7s ease forwards;
+    }
+
+    .about-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 30px;
+    }
+
+    .about-card {
+      padding: 25px 30px;
+      background-color: #ffffff;
+      border-radius: 15px;
+      text-align: left;
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .about-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 18px 40px rgba(26, 115, 232, 0.3);
+    }
+
+    .about-card h3 {
+      font-size: 2rem;
+      color: #1a73e8;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      font-weight: 900;
+      letter-spacing: 1.2px;
+      animation: fadeInUp 1.5s ease forwards;
+    }
+
+    .about-card h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      color: #222;
+    }
+
+    .divider {
+      width: 50px;
+      height: 3px;
+      background-color: #ccc;
+      margin-bottom: 20px;
+      border-radius: 3px;
+    }
+
+    .about-card p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+
+    .about-card a {
+      text-decoration: none;
+      color: #1a73e8;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    .about-card a:hover {
+      text-decoration: underline;
+      color: #0f52ba;
+    }
+
+    /* counter  */
+
+    .counter-section {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 80px 5%;
+      background-color: #e9f0fe;
+      text-align: center;
+    }
+
+    .counter-box {
+      color: #333;
+    }
+
+    .counter {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #698cf0;
+    }
+
+    .label {
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-top: 5px;
+    }
+
+    /* service  */
+    .services-section {
+      padding: 60px 0;
+    }
+
+    .bg-card-img {
+      background-image: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .diff-card-bg {
+      background: #000 !important;
+    }
+
+    .service-card {
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      text-align: center;
+      padding: 50px 20px;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s ease;
+    }
+
+    .service-card .icon {
+      font-size: 40px;
+      color: #698cf0;
+      transition: transform 0.3s ease;
+    }
+
+    .service-card h5 {
+      font-weight: bold;
+      margin-top: 20px;
+      color: #698cf0;
+      font-size: 16px;
+    }
+
+    .service-card .hover-content {
+      position: absolute;
+      bottom: 15px;
+      left: 0;
+      right: 0;
+      opacity: 0;
+      color: #ccc;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      transform: translateY(20px);
+    }
+
+    .service-card:hover .icon {
+      transform: translateY(-10px);
+    }
+
+    .service-card:hover .hover-content {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .services-title h2 {
+      font-size: 2rem;
+
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      font-weight: 900;
+      letter-spacing: 1.2px;
+      animation: fadeInUp 1.5s ease forwards;
+    }
+
+    .services-title span {
+      color: #698cf0;
+    }
+
+    .service-list li {
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: #777;
+      font-size: 14px;
+    }
+
+    .service-list li::before {
+      content: "\F231";
+      font-family: bootstrap-icons !important;
+      color: #698cf0;
+      margin-right: 10px;
+    }
+
+    /* testimonoal  */
+
+    .testimonial-section {
+      padding: 60px 20px;
+      text-align: center;
+      background-color: #f4f7fb;
+    }
+
+    .testimonial-section span {
+      color: #698cf0;    
+      font-size: 2rem;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        font-weight: 900;
+        letter-spacing: 1.2px;
+        animation: fadeInUp 1.5s ease forwards;
+    }
+
+    .testimonial-section h2 {
+      font-weight: 700;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .testimonial-section p.subtitle {
+      color: #777;
+      margin-bottom: 40px;
+    }
+
+    .testimonial-card {
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 25px;
+      text-align: left;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      transition: 0.3s;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .testimonial-user {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .testimonial-user img {
+      width: 60px !important;
+      height: 60px !important;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .testimonial-user h5 {
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .testimonial-user span {
+      font-size: 14px;
+      color: #888;
+    }
+
+    .testimonial-text {
+      font-size: 15px;
+      color: #555;
+    }
+
+    /* contact  */
+
+    .contact-section {
+      background-color: #fff;
+      color: #000;
+    }
+
+    .contact-section {
+      padding: 60px 20px;
+    }
+
+    .contact-section .left h2 {
+      font-size: 32px;
+      font-weight: 700;
+    }
+
+    .contact-section .left h2 span {
+      color: #698cf0;
+      display: inline-block;
+      border-bottom: 5px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .contact-section .left p {
+      margin-top: 15px;
+      font-size: 15px;
+      color: #777;
+    }
+
+    .contact-info {
+      margin-top: 30px;
+    }
+
+    .contact-info p {
+      margin: 0;
+      font-size: 15px;
+      color: #eee;
+    }
+
+    .social-icons {
+      margin-top: 20px;
+    }
+
+    .social-icons a {
+      color: #698cf0;
+      margin-right: 15px;
+      font-size: 20px;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #000;
+    }
+
+    /* ----------footer------------- */
+    .footer-social-icons a {
+      color: #fff;
+      margin-right: 10px;
+    }
+
+    .footer-social-icons a:hover {
+      color: #698cf0;
+    }
+
+    .footer-li li:hover {
+      text-decoration: underline;
+    }
+
+    .form-control,
+    .form-check-label {
+      color: #333;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 15px;
+      border: 1px solid #777;
+    }
+
+    .contact-form textarea {
+      resize: none;
+      height: 140px;
+    }
+
+    .form-check-input {
+      margin-right: 10px;
+    }
+
+    .btn-submit {
+      background-color: #698cf0;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      width: 100%;
+      border-radius: 6px;
+      transition: 0.3s;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .btn-submit:hover {
+      background-color: #000;
+      color: #698cf0;
+    }
+
+    .owl-dots {
+      margin-top: 30px;
+    }
+
+    /* -----------------Respnsiv-code------------------------------ */
+
+    @media (max-width: 768px) {
+      .contact-section {
+        text-align: center;
+      }
+
+      .social-icons {
+        justify-content: center;
+      }
+
+      .hero-content {
+        flex-direction: column;
+      }
+
+      .left-text,
+      .form-card {
+        max-width: 100%;
+        text-align: center;
+      }
+
+      .left-text h4 {
+        font-size: 0.8rem;
+      }
+
+      .left-text h1 {
+        font-size: 1.6rem;
+      }
+
+      .button {
+        padding: 10px 14px;
+        font-size: 0.8rem;
+      }
+
+      .form-card {
+        margin-top: 20px;
+        padding: 20px;
+      }
+
+      .about-section p {
+        margin: 0 auto 30px;
+      }
+
+      .about-cards {
+        gap: 20px;
+      }
+
+      .about-section {
+        padding: 60px 20px;
+      }
+
+      .about-section h2 {
+        font-size: 1.5rem;
+      }
+
+      .counter-section {
+        flex-direction: column;
+        gap: 30px;
+        padding: 60px 20px;
+      }
+
+      .services-section {
+        padding: 0px 0px 60px 0px;
+      }
+
+      .services-title h2 {
+        font-size: 1.5rem;
+      }
+
+      .testimonial-section h2 {
+        font-size: 1.5rem;
+      }
+
+      .contact-section .left h2 {
+        font-size: 1.5rem;
+      }
+
+      .footer-main {
+        text-align: center;
+      }
+
+      .service-card {
+        padding: 30px 0px;
+      }
+
+      .service-card h5 {
+        font-size: 12px;
+        margin-top: 10px;
+      }
+
+      .marginforsm {
+        margin-top: 20px;
+      }
+
+      .navbar-nav .nav-link:hover::after,
+      .navbar-nav .nav-link.active::after {
+        width: 0;
+      }
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+
+  <body>
+    <button id="scrollToTop">
+      <svg viewBox="0 0 100 100">
+        <circle id="circle-bg" cx="50" cy="50" r="45" />
+        <circle id="circle-progress" cx="50" cy="50" r="45" />
+      </svg>
+      <i class="bi bi-chevron-double-up scroll-icon"></i>
+    </button>
+
+    <header>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            <img src="https://i.ibb.co/v6DHjFFZ/log-hr-sm.png" alt="" />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarTogglerDemo02"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div
+            class="collapse navbar-collapse justify-content-between"
+            id="navbarTogglerDemo02"
+          >
+            <ul class="navbar-nav mb-2 mb-lg-0 mx-lg-auto gap-2">
+              <li class="nav-item">
+                <a class="nav-link active" href="#home">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#about">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#service">Service</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#contact">Contact Us</a>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <a href="tel:1234567890" class="btn let-talk"
+                >Let 's Talk <i class="bi bi-arrow-right"></i
+              ></a>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero" id="home">
+      <div class="overlay"></div>
+      <div class="hero-content">
+        <div class="left-text">
+          <h4>The Future of Branding Starts Here</h4>
+          <h1>LET’S EVOLVE BRANDS WITH <br /><span>SMART AI STRATEGY</span></h1>
+          <button class="button">EXPLORE MORE</button>
+        </div>
+        <div class="form-card">
+          <h2>REGISTER NOW</h2>
+          <p>Take your free trial</p>
+          <form>
+            <input type="text" placeholder="Your Name" required />
+            <input type="email" placeholder="Your Email" required />
+            <input type="tel" placeholder="Phone Number" required />
+            <div class="disclaimer">
+              <span>🔒</span> We will never share your personal info
+            </div>
+            <button class="button" type="submit">GET A QUOTE</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about-section">
+      <h2>About <span>Us</span></h2>
+      <p>
+        We are a team of passionate designers and developers dedicated to
+        crafting the best digital experiences. With a focus on quality and
+        creativity, we turn your ideas into reality.
+      </p>
+      <div class="about-cards container">
+        <div class="about-card">
+          <h3>12</h3>
+          <h4>Years Experience</h4>
+          <div class="divider"></div>
+          <p>
+            We bring a decade of industry experience and innovation to every
+            project.
+          </p>
+          <a href="#">Learn More &rarr;</a>
+        </div>
+        <div class="about-card">
+          <h3>24</h3>
+          <h4>Team Members</h4>
+          <div class="divider"></div>
+          <p>
+            Our diverse team combines expertise from various fields to deliver
+            excellence.
+          </p>
+          <a href="#">Learn More &rarr;</a>
+        </div>
+        <div class="about-card">
+          <h3>210</h3>
+          <h4>Projects Completed</h4>
+          <div class="divider"></div>
+          <p>
+            Over 200 successful projects have made us a trusted name in the
+            industry.
+          </p>
+          <a href="#">Learn More &rarr;</a>
+        </div>
+        <div class="about-card">
+          <h3>12</h3>
+          <h4>Partners</h4>
+          <div class="divider"></div>
+          <p>
+            We collaborate with trusted partners to enhance our service
+            offerings.
+          </p>
+          <a href="#">Learn More &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="counter-section" id="counter-section">
+      <div class="counter-box">
+        <div class="counter" data-target="3254">0</div>
+        <div class="label">Happy Clients</div>
+      </div>
+      <div class="counter-box">
+        <div class="counter" data-target="1658">0</div>
+        <div class="label">Completed Projects</div>
+      </div>
+      <div class="counter-box">
+        <div class="counter" data-target="6947">0</div>
+        <div class="label">Working Hours</div>
+      </div>
+      <div class="counter-box">
+        <div class="counter" data-target="9470">0</div>
+        <div class="label">Cups of Coffee</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container services-section" id="service">
+        <div class="row">
+          <!-- Left Side: 4 Cards -->
+          <div class="col-lg-6 mb-4 mb-lg-0 bg-card-img p-0">
+            <div class="row g-0">
+              <!-- Card 1 -->
+              <div class="col-6">
+                <div class="service-card">
+                  <div class="icon">
+                    <i class="bi bi-file-earmark-text"></i>
+                  </div>
+                  <h5>AWESOME DESIGN</h5>
+                  <div class="hover-content">Modern and clean visuals</div>
+                </div>
+              </div>
+              <!-- Card 2 -->
+              <div class="col-6">
+                <div class="service-card diff-card-bg">
+                  <div class="icon"><i class="bi bi-phone"></i></div>
+                  <h5>RESPONSIVE LAYOUT</h5>
+                  <div class="hover-content">Adapts to all screens</div>
+                </div>
+              </div>
+              <!-- Card 3 -->
+              <div class="col-6">
+                <div class="service-card diff-card-bg">
+                  <div class="icon"><i class="bi bi-stack"></i></div>
+                  <h5>EASY TO CUSTOMIZE</h5>
+                  <div class="hover-content">Flexible for developers</div>
+                </div>
+              </div>
+              <!-- Card 4 -->
+              <div class="col-6">
+                <div class="service-card">
+                  <div class="icon">
+                    <i class="bi bi-gear-wide-connected"></i>
+                  </div>
+                  <h5>FULL SUPPORT WORK</h5>
+                  <div class="hover-content">Ongoing help and support</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Side: Text -->
+          <div class="col-lg-6 px-5 marginforsm">
+            <div class="services-title">
+              <h2>OUR GREAT <span>SERVICES</span></h2>
+              <div class="underline"></div>
+              <p class="text-muted">
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been standard. Lorem Ipsum has been
+                the industry's standard dummy text ever since the 1500s.
+              </p>
+            </div>
+
+            <ul class="service-list list-unstyled mt-4">
+              <li>Responsive Design</li>
+              <li>Great Support</li>
+              <li>Look great on any devices</li>
+              <li>Highest Speed</li>
+              <li>Fresh Design</li>
+              <li>Useful and Intuitive Interface</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonial-section">
+      <h2>Brand <span>Testimonials</span></h2>
+
+      <p class="subtitle">
+        Each is designed to sound modern, confident, and aligned with your
+        <br />
+        AI-powered digital brand strategy vibe.
+      </p>
+
+      <div class="container">
+        <div class="owl-carousel owl-theme">
+          <!-- Card 1 -->
+          <div class="testimonial-card">
+            <div class="testimonial-user">
+              <img
+                src="https://randomuser.me/api/portraits/men/32.jpg"
+                alt="User"
+              />
+              <div>
+                <h5>Mark Smith</h5>
+                <span>Envato Inc.</span>
+              </div>
+            </div>
+            <p class="testimonial-text">
+              This should be used to tell a story and let your users know about
+              your product or service.
+            </p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="testimonial-card">
+            <div class="testimonial-user">
+              <img
+                src="https://randomuser.me/api/portraits/women/44.jpg"
+                alt="User"
+              />
+              <div>
+                <h5>Vera Duncan</h5>
+                <span>PayPal Inc.</span>
+              </div>
+            </div>
+            <p class="testimonial-text">
+              This should be used to tell a story and let your users know about
+              your product or service.
+            </p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="testimonial-card">
+            <div class="testimonial-user">
+              <img
+                src="https://randomuser.me/api/portraits/men/85.jpg"
+                alt="User"
+              />
+              <div>
+                <h5>Bryce Vaughn</h5>
+                <span>X Inc.</span>
+              </div>
+            </div>
+            <p class="testimonial-text">
+              This should be used to tell a story and let your users know about
+              your product or service.
+            </p>
+          </div>
+
+          <!-- Add more if needed -->
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <div class="row g-5 align-items-start">
+          <!-- Left Side -->
+          <div class="col-md-6 left">
+            <h2>Let's talk about<br /><span>working together</span></h2>
+            <p>
+              Need a quick question answered? Our support team is available to
+              answer any queries seven days a week.
+            </p>
+
+            <div class="contact-info mt-4">
+              <p>
+                <strong>Email:</strong>
+                <a
+                  href="mailto:ca@company.com"
+                  style="text-decoration: none; color: #777"
+                  >ca@company.com</a
+                >
+              </p>
+              <p><strong>Phone:</strong> +91 9874575632</p>
+            </div>
+
+            <div class="social-icons mt-3 d-flex">
+              <a href="#"><i class="bi bi-facebook"></i></a>
+              <a href="#"><i class="bi bi-twitter-x"></i></a>
+              <a href="#"><i class="bi bi-instagram"></i></a>
+              <a href="#"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+
+          <!-- Right Side: Contact Form -->
+          <div class="col-md-6">
+            <form class="contact-form needs-validation" novalidate>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Your name"
+                    required
+                  />
+                  <div class="invalid-feedback">Please enter your name.</div>
+                </div>
+                <div class="col-md-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Company name"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <input
+                    type="tel"
+                    class="form-control"
+                    placeholder="Phone number"
+                    pattern="\\d{10}"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Please enter a 10-digit phone number using only numbers.
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <input
+                    type="email"
+                    class="form-control"
+                    placeholder="Email address"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Please enter a valid email.
+                  </div>
+                </div>
+                <div class="col-12">
+                  <textarea
+                    class="form-control"
+                    placeholder="Anything else you would like us to know?"
+                  ></textarea>
+                </div>
+                <div class="col-12 d-flex align-items-center">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="agree"
+                    required
+                  />
+                  <label class="form-check-label" for="agree"
+                    >I understand and agree to the privacy policy.</label
+                  >
+                  <div class="invalid-feedback d-block ms-2">
+                    You must agree before submitting.
+                  </div>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn-submit">
+                    Submit request
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-dark footer-main text-light pt-5 pb-4">
+      <div class="container">
+        <div class="row gy-4">
+          <!-- Logo + Description -->
+          <div class="col-md-4">
+            <h5 class="fw-bold">CreativeAgency</h5>
+            <p class="text-white">
+              We craft beautiful digital experiences — from web & mobile apps to
+              branding and SEO.
+            </p>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="col-md-2">
+            <h6 class="fw-semibold">Quick Links</h6>
+            <ul class="list-unstyled footer-li">
+              <li>
+                <a href="#" class="text-white text-decoration-none">Home</a>
+              </li>
+              <li>
+                <a href="#" class="text-white text-decoration-none">About Us</a>
+              </li>
+              <li>
+                <a href="#" class="text-white text-decoration-none">Services</a>
+              </li>
+              <li>
+                <a href="#" class="text-white text-decoration-none"
+                  >Contact Us</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Services -->
+          <div class="col-md-3">
+            <h6 class="fw-semibold">Our Services</h6>
+            <ul class="list-unstyled footer-li">
+              <li>
+                <a href="#" class="text-white text-decoration-none"
+                  >Web Development</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-white text-decoration-none"
+                  >Mobile Apps</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-white text-decoration-none"
+                  >SEO Optimization</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-white text-decoration-none"
+                  >UI/UX Design</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Social Media -->
+          <div class="col-md-3">
+            <h6 class="fw-semibold">Follow Us</h6>
+            <div class="footer-social-icons">
+              <a href="#" class="fs-5"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="fs-5"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="fs-5"><i class="bi bi-linkedin"></i></a>
+              <a href="#" class="fs-5"><i class="bi bi-twitter-x"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <hr class="border-secondary my-4" />
+
+        <!-- Bottom Bar -->
+        <div
+          class="d-flex flex-column flex-md-row justify-content-between align-items-center text-white small"
+        >
+          <div>&copy; 2025 CreativeAgency. All rights reserved.</div>
+          <div class="mt-2 mt-md-0">
+            <a href="#" class="text-white me-3 text-decoration-none"
+              >Terms & Conditions</a
+            >
+            <a href="#" class="text-white text-decoration-none"
+              >Privacy Policy</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      $(".owl-carousel").owlCarousel({
+        loop: true,
+        margin: 20,
+        nav: false,
+        dots: true,
+        autoplay: true,
+        autoplayTimeout: 3000,
+        autoplayHoverPause: true,
+        responsive: {
+          0: { items: 1 },
+          576: { items: 1 },
+          768: { items: 2 },
+          992: { items: 3 },
+        },
+      });
+
+      const counters = document.querySelectorAll(".counter");
+      let started = false;
+
+      function animateCounters() {
+        if (!started && isInView(document.getElementById("counter-section"))) {
+          counters.forEach((counter) => {
+            const target = +counter.getAttribute("data-target");
+            const increment = target / 100;
+
+            let count = 0;
+            const update = () => {
+              count += increment;
+              if (count < target) {
+                counter.innerText = Math.ceil(count);
+                requestAnimationFrame(update);
+              } else {
+                counter.innerText = target;
+              }
+            };
+            update();
+          });
+          started = true;
+        }
+      }
+
+      function isInView(el) {
+        const rect = el.getBoundingClientRect();
+        return rect.top < window.innerHeight && rect.bottom >= 0;
+      }
+
+      window.addEventListener("scroll", animateCounters);
+
+      (() => {
+        "use strict";
+        const forms = document.querySelectorAll(".needs-validation");
+        Array.from(forms).forEach((form) => {
+          form.addEventListener(
+            "submit",
+            (event) => {
+              if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add("was-validated");
+            },
+            false
+          );
+        });
+      })();
+
+      const scrollBtn = document.getElementById("scrollToTop");
+      const circle = document.getElementById("circle-progress");
+      const circleRadius = circle.r.baseVal.value;
+      const circumference = 2 * Math.PI * circleRadius;
+
+      circle.style.strokeDasharray = `${circumference}`;
+      circle.style.strokeDashoffset = circumference;
+
+      function setProgress(percent) {
+        const offset = circumference - (percent / 100) * circumference;
+        circle.style.strokeDashoffset = offset;
+      }
+
+      window.addEventListener("scroll", () => {
+        const scrollTotal =
+          document.documentElement.scrollHeight - window.innerHeight;
+        const scrollNow = window.scrollY;
+        const scrollPercent = (scrollNow / scrollTotal) * 100;
+
+        setProgress(scrollPercent);
+
+        if (scrollNow > 100) {
+          scrollBtn.style.display = "block";
+        } else {
+          scrollBtn.style.display = "none";
+        }
+      });
+
+      scrollBtn.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+    </script>
+  </body>
+</html>
